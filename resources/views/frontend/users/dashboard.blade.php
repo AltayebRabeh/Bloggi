@@ -24,9 +24,9 @@
                                     <td>{{ $post->status }}</td>
                                     <td>
                                         <a href="{{ route('users.post.edit', $post->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href="{{ route('frontend.dashboard') }}" onclick="if (confirm('Are you sure to delete this post?')) { event.preventDefault(); document.getElementById('post-delete-{{ $post->id }}').submit();} else {return false;}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                        <a href="{{ route('users.post.destroy', $post->id) }}" onclick="if (confirm('Are you sure to delete this post?')) { event.preventDefault(); document.getElementById('post-delete-{{ $post->id }}').submit();} else {return false;}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
 
-                                        <form action="{{ route('frontend.dashboard') }}" id="post-delete-{{ $post->id }}">
+                                        <form action="{{ route('users.post.destroy', $post->id) }}" id="post-delete-{{ $post->id }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                         </form>
