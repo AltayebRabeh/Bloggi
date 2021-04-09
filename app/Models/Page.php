@@ -8,10 +8,11 @@ use App\Models\Category;
 use App\Models\PostMedia;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Page extends Model
 {
-    use Sluggable;
+    use Sluggable, SearchableTrait;
 
     protected $table = 'posts';
 
@@ -23,6 +24,17 @@ class Page extends Model
                 'source' => 'title'
             ]
         ];
+    }
+
+    protected $searchable = [
+        'columns' => [
+            'posts.title'       => 10,
+            'posts.description' => 10,
+        ]
+    ];
+
+    public function status() {
+        return $this->status == 1 ? 'Active' : 'Inactive';
     }
 
     public function category() {

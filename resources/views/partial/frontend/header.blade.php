@@ -31,34 +31,7 @@
             <div class="col-md-8 col-sm-8 col-5 col-lg-2">
                 <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
                     <li class="shop_search"><a class="search__active" href="#"></a></li>
-                    <li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun">3</span></a>
-                        <!-- Start Shopping Cart -->
-                        <div class="block-minicart minicart__active">
-                            <div class="minicart-content-wrapper">
-                                <div class="single__items">
-                                    <div class="miniproduct">
-                                        <div class="item01 d-flex">
-                                            <div class="thumb">
-                                                <a href="product-details.html"><img src="{{ asset('assets/posts/default_small.jpg') }}" width="50" height="50" alt="product images"></a>
-                                            </div>
-                                            <div class="content">
-                                                <h6><a href="product-details.html">Voyage Yoga Bag</a></h6>
-                                                <span class="prize">$30.00</span>
-                                                <div class="product_prize d-flex justify-content-between">
-                                                    <span class="qun">Qty: 01</span>
-                                                    <ul class="d-flex justify-content-end">
-                                                        <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-                                                        <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Shopping Cart -->
-                    </li>
+                    <user-notification></user-notification>
                     <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
                         <div class="searchbar__content setting__block">
                             <div class="content-inner">
@@ -123,14 +96,14 @@
 <!-- //Header -->
 <!-- Start Search Popup -->
 <div class="box-search-content search_active block-bg close__top">
-    <form id="search_mini_form" class="minisearch" action="#">
-        <div class="field__search">
-            <input type="text" placeholder="Search entire store here...">
-            <div class="action">
-                <a href="#"><i class="zmdi zmdi-search"></i></a>
-            </div>
+    {!! Form::open(['route' => 'frontend.search', 'method' => 'get', 'id' => 'search_mini_form', 'class' => 'minisearch']) !!}
+    <div class="field__search">
+        {!! Form::text('keyword', old('keyword', request()->keyword), ['placeholder' => 'Search ...']) !!}
+        <div class="action">
+            <a href="javascript::void(0);" onclick="event.preventDefault();document.getElementById('search_mini_form').submit();"><i class="zmdi zmdi-search"></i></a>
         </div>
-    </form>
+    </div>
+    {!! Form::close() !!}
     <div class="close__wrap">
         <span>close</span>
     </div>

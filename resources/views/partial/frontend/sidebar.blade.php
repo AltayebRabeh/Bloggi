@@ -43,7 +43,7 @@
     <aside class="widget comment_widget">
         <h3 class="widget-title">Comments</h3>
         <ul>
-            @foreach($recent_commints as $recent_comment)
+            @foreach($recent_comments as $recent_comment)
             <li>
                 <div class="post-wrapper">
                     <div class="thumb">
